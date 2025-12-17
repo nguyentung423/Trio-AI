@@ -1,0 +1,5 @@
+# Thư mục chứa dữ liệu đã xử lý
+
+# Dữ liệu sau khi feature engineering, sẵn sàng cho training
+
+# Ví dụ: features_train.csv, features_test.csv

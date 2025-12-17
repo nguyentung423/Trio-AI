@@ -1,0 +1,24 @@
+{
+  "name": "trio-ai",
+  "version": "0.1.0",
+  "description": "Trio AI - Agricultural Yield Prediction Platform",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n FE,BE -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "clean": "rm -rf frontend/.next frontend/node_modules backend/dist backend/node_modules node_modules",
+    "lint": "npm run lint:frontend",
+    "lint:frontend": "cd frontend && npm run lint"
+  },
+  "keywords": ["trio-ai", "agriculture", "ai", "prediction", "vietnam"],
+  "author": "Trio AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

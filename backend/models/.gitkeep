@@ -1,0 +1,4 @@
+# Thư mục chứa model artifacts
+# - trained_model.pkl: Model ML đã train (Random Forest / XGBoost)
+# - scaler.pkl: Scaler cho chuẩn hóa features
+# - shap_values.pkl: SHAP values cho explainability
