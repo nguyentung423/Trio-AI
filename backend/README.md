@@ -54,7 +54,4 @@ Swagger docs: http://localhost:8000/docs
 pytest tests/
 ```
 
-## 📓 Notebooks
 
-- `EDA.ipynb`: Exploratory Data Analysis
-- `model_experiments.ipynb`: Thử nghiệm các model ML
