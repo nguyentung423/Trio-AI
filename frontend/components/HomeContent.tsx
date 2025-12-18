@@ -822,89 +822,59 @@ export default function HomeContent() {
             }}
           />
 
-          {/* Mobile Province Card - positioned at bottom, same style as desktop */}
+          {/* Mobile Province Card - compact & optimized for small screens */}
           {isSettled && selectedProvince && (
-            <div className="vietnam-insight-card absolute z-20 lg:hidden left-1/2 -translate-x-1/2 bottom-20 sm:bottom-24">
+            <div className="vietnam-insight-card absolute z-20 lg:hidden left-1/2 -translate-x-1/2 bottom-16 xs:bottom-20 sm:bottom-24 w-[calc(100%-2rem)] max-w-[320px] sm:max-w-none sm:w-auto">
               <Link
                 href="/forecast"
-                className={`group inline-flex items-center gap-3 sm:gap-4 rounded-2xl px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 active:scale-[0.98] ${
+                className={`group flex items-center gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 transition-all duration-300 active:scale-[0.98] ${
                   theme === "dark"
-                    ? "bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.05] hover:border-white/[0.1] backdrop-blur-xl"
-                    : "bg-white/60 border border-slate-200/60 hover:bg-white/80 hover:border-slate-200 shadow-sm backdrop-blur-xl"
+                    ? "bg-black/60 border border-white/10 backdrop-blur-xl"
+                    : "bg-white/80 border border-slate-200/80 shadow-lg backdrop-blur-xl"
                 }`}
               >
-                {/* Scanning indicator - same as desktop */}
+                {/* Pulse indicator - compact */}
                 <div
-                  className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex-shrink-0 ${
+                  className={`flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex-shrink-0 ${
                     theme === "dark" ? "bg-emerald-500/10" : "bg-emerald-50"
                   }`}
                 >
                   <div className="relative">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                    <div className="absolute inset-0 w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500"></div>
+                    <div className="absolute inset-0 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-ping"></div>
                   </div>
                 </div>
 
-                {/* Content - same as desktop */}
-                <div className="text-left">
-                  <p
-                    className={`text-[9px] sm:text-[10px] uppercase tracking-widest mb-0.5 sm:mb-1 ${
-                      theme === "dark"
-                        ? "text-emerald-400/70"
-                        : "text-emerald-600/70"
-                    }`}
-                  >
-                    {language === "vi"
-                      ? "Vị trí phát hiện"
-                      : "Location detected"}
-                  </p>
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <span className="text-[13px] sm:text-[15px]">🇻🇳</span>
+                {/* Content - compact */}
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[12px] sm:text-[14px]">🇻🇳</span>
                     <p
-                      className={`text-[13px] sm:text-[14px] font-medium ${
+                      className={`text-[12px] sm:text-[13px] font-medium truncate ${
                         theme === "dark" ? "text-white/90" : "text-slate-800"
                       }`}
                     >
-                      {language === "vi"
-                        ? "Cà phê · Đắk Lắk"
-                        : "Coffee · Dak Lak"}
+                      {language === "vi" ? "Cà phê · Đắk Lắk" : "Coffee · Dak Lak"}
                     </p>
                   </div>
                 </div>
 
-                {/* CTA - same as desktop */}
-                <div
-                  className={`flex items-center gap-1 sm:gap-1.5 ml-1 sm:ml-2 pl-3 sm:pl-4 border-l ${
-                    theme === "dark"
-                      ? "border-white/[0.06]"
-                      : "border-slate-200"
+                {/* Arrow only on mobile */}
+                <svg
+                  className={`w-4 h-4 flex-shrink-0 ${
+                    theme === "dark" ? "text-white/30" : "text-slate-400"
                   }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span
-                    className={`text-[11px] sm:text-[12px] font-medium whitespace-nowrap ${
-                      theme === "dark"
-                        ? "text-white/50 group-hover:text-white/70"
-                        : "text-slate-500 group-hover:text-slate-700"
-                    } transition-colors`}
-                  >
-                    {language === "vi" ? "Xem dự báo" : "View forecast"}
-                  </span>
-                  <svg
-                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 ${
-                      theme === "dark" ? "text-white/40" : "text-slate-400"
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </Link>
             </div>
           )}
