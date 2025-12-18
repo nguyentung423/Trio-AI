@@ -822,94 +822,88 @@ export default function HomeContent() {
             }}
           />
 
-          {/* Mobile Province Card - positioned at bottom */}
+          {/* Mobile Province Card - positioned at bottom, same style as desktop */}
           {isSettled && selectedProvince && (
-            <div className="vietnam-insight-card absolute z-20 lg:hidden left-4 right-4 bottom-20 sm:bottom-24">
+            <div className="vietnam-insight-card absolute z-20 lg:hidden left-1/2 -translate-x-1/2 bottom-20 sm:bottom-24">
               <Link
                 href="/forecast"
-                className={`block backdrop-blur-xl border rounded-2xl px-4 py-3.5 shadow-2xl transition-all duration-300 active:scale-[0.98] ${
+                className={`group inline-flex items-center gap-3 sm:gap-4 rounded-2xl px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 active:scale-[0.98] ${
                   theme === "dark"
-                    ? "bg-black/80 border-white/10 hover:bg-black/90"
-                    : "bg-white/95 border-slate-200 hover:bg-white shadow-lg"
+                    ? "bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.05] hover:border-white/[0.1] backdrop-blur-xl"
+                    : "bg-white/60 border border-slate-200/60 hover:bg-white/80 hover:border-slate-200 shadow-sm backdrop-blur-xl"
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  {/* Icon with pulse indicator */}
+                {/* Scanning indicator - same as desktop */}
+                <div
+                  className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex-shrink-0 ${
+                    theme === "dark" ? "bg-emerald-500/10" : "bg-emerald-50"
+                  }`}
+                >
                   <div className="relative">
-                    <span className="text-[28px]">
-                      {selectedProvince.crop === "Coffee"
-                        ? "☕"
-                        : selectedProvince.crop === "Rice"
-                        ? "🌾"
-                        : selectedProvince.crop === "Tea"
-                        ? "🍵"
-                        : selectedProvince.crop === "Dragon Fruit"
-                        ? "🐉"
-                        : selectedProvince.crop === "Rubber"
-                        ? "🌳"
-                        : selectedProvince.crop === "Pepper"
-                        ? "🌶️"
-                        : "🌱"}
-                    </span>
-                    <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500">
-                      <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping"></div>
-                    </div>
+                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <div className="absolute inset-0 w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
                   </div>
+                </div>
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
+                {/* Content - same as desktop */}
+                <div className="text-left">
+                  <p
+                    className={`text-[9px] sm:text-[10px] uppercase tracking-widest mb-0.5 sm:mb-1 ${
+                      theme === "dark"
+                        ? "text-emerald-400/70"
+                        : "text-emerald-600/70"
+                    }`}
+                  >
+                    {language === "vi"
+                      ? "Vị trí phát hiện"
+                      : "Location detected"}
+                  </p>
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <span className="text-[13px] sm:text-[15px]">🇻🇳</span>
                     <p
-                      className={`text-[10px] uppercase tracking-wider font-medium ${
-                        theme === "dark"
-                          ? "text-emerald-400/70"
-                          : "text-emerald-600/80"
+                      className={`text-[13px] sm:text-[14px] font-medium ${
+                        theme === "dark" ? "text-white/90" : "text-slate-800"
                       }`}
                     >
                       {language === "vi"
-                        ? "Vị trí phát hiện"
-                        : "Location detected"}
-                    </p>
-                    <p
-                      className={`text-[14px] font-medium mt-0.5 truncate ${
-                        theme === "dark" ? "text-white" : "text-slate-900"
-                      }`}
-                    >
-                      {language === "vi"
-                        ? `${selectedProvince.cropVi} · ${selectedProvince.nameVi}`
-                        : `${selectedProvince.crop} · ${selectedProvince.name}`}
+                        ? "Cà phê · Đắk Lắk"
+                        : "Coffee · Dak Lak"}
                     </p>
                   </div>
+                </div>
 
-                  {/* Yield & Arrow */}
-                  <div className="flex items-center gap-2 flex-shrink-0">
-                    <div className="text-right">
-                      <span className="text-emerald-500 text-[18px] font-bold">
-                        {selectedProvince.yield}
-                      </span>
-                      <span
-                        className={`text-[12px] ml-0.5 ${
-                          theme === "dark" ? "text-white/40" : "text-slate-400"
-                        }`}
-                      >
-                        t/ha
-                      </span>
-                    </div>
-                    <svg
-                      className={`w-4 h-4 ${
-                        theme === "dark" ? "text-white/30" : "text-slate-400"
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
+                {/* CTA - same as desktop */}
+                <div
+                  className={`flex items-center gap-1 sm:gap-1.5 ml-1 sm:ml-2 pl-3 sm:pl-4 border-l ${
+                    theme === "dark"
+                      ? "border-white/[0.06]"
+                      : "border-slate-200"
+                  }`}
+                >
+                  <span
+                    className={`text-[11px] sm:text-[12px] font-medium whitespace-nowrap ${
+                      theme === "dark"
+                        ? "text-white/50 group-hover:text-white/70"
+                        : "text-slate-500 group-hover:text-slate-700"
+                    } transition-colors`}
+                  >
+                    {language === "vi" ? "Xem dự báo" : "View forecast"}
+                  </span>
+                  <svg
+                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 ${
+                      theme === "dark" ? "text-white/40" : "text-slate-400"
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
                 </div>
               </Link>
             </div>
