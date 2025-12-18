@@ -232,19 +232,28 @@ app = FastAPI(
 )
 
 # CORS middleware cho phép frontend gọi API
-# Production: chỉ cho phép các domain cụ thể
+# Production: cho phép các domain cụ thể
+# Thêm wildcard patterns cho Vercel preview deployments
 ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://trio-ai.vercel.app",  # Production frontend (update as needed)
+    "https://trio-ai.vercel.app",
+    "https://*.vercel.app",  # Vercel preview deployments
 ]
+
+# Trong production, có thể cần allow tất cả origins
+# Kiểm tra biến môi trường để quyết định
+import os
+if os.getenv("ALLOW_ALL_ORIGINS", "false").lower() == "true":
+    ALLOWED_ORIGINS = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
+    allow_origins=["*"],  # Tạm thời allow all để debug
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 
